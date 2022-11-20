@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>
+            Tasks
+        </title>
+    </head>
+    <body>
+        <div class="flex items-center justify-center h-screen">
+            <div class="m-8">
+                <div class="font-black text-3xl">
+                    Task Manager vX
+                </div>
+                <span class="text-sm">
+                    We really lost count
+                </span>
+                <br>
+                <br>
+                <form action="../add-task/" method="get">
+                    <input type="text" name="task" class="bg-gray-200 rounded mr-1 px-3 py-2" placeholder="Do something...">
+                    <input type="submit" value="Add Task" class="bg-blue-500 hover:bg-blue-600 text-white rounded px-3 py-2 cursor-pointer transition">
+                </form>
+                <br>
+                <br>
+                <h2 class="text-xl font-bold">
+                    Here is what's left to do
+                </h2>
+                <br>
+                {% for task in tasks %}
+                    <div class="border-slate-400 rounded border border-dashed p-3 flex justify-between items-center mb-1">
+                        {{forloop.counter}}. &nbsp; {{task}}
+                        <div>
+                            <a href="../complete_task/{{forloop.counter}}" class="text-blue-400 ml-3">
+                                Done
+                            </a>
+                            <a href="../delete-task/{{forloop.counter}}" class="text-red-400 ml-3">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <br>
+                {% endfor %}
+                <br>
+                <a href="../tasks" class="bg-blue-500 hover:bg-blue-600 text-white rounded px-3 py-2 cursor-pointer transition">
+                    Add Tasks
+                </a>
+                &nbsp;
+                <a href="../completed_tasks" class="bg-blue-500 hover:bg-blue-600 text-white rounded px-3 py-2 cursor-pointer transition">
+                    Completed Tasks
+                </a>
+                &nbsp;
+                <a href="../all_tasks" class="bg-blue-500 hover:bg-blue-600 text-white rounded px-3 py-2 cursor-pointer transition">
+                    All Tasks
+                </a>
+            </div>
+        </div>
+        
+        
+    </body>
+</html>
